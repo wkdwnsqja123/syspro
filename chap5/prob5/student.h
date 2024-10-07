@@ -1,5 +1,5 @@
 #define MAX 24
-#define START_ID 1001001
+#define START_ID 1401001
 
 struct student {
 	char name[MAX];
