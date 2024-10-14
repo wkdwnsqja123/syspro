@@ -12,15 +12,14 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "How to use: %s file\n", argv[0]);
 		exit(1);
 	}
-
-	if ((fd = open(argv[1], O_WRONLY | O_CREAT | O_EXCL, 0640)) == -1) {
+	if ((fd = open(argv[1], O_WRONLY|O_CREAT|O_EXCL, 0640)) == -1) {
 		perror(argv[1]);
 		exit(2);
 	}
-	printf("%-9s %-8s %-4s\n", "StulD", "Name", "Score");
+	printf("%-9s %-8s %-4s\n", "StuID", "Name", "Score");
 	while (scanf("%d %s %d", &record.id, record.name, &record.score) == 3) {
 		lseek(fd, (record.id - START_ID) * sizeof(record), SEEK_SET);
-		while(fd, (char *) &record, sizeof(record) );
+		write(fd, (char *) &record, sizeof(record) );
 	}
 	close(fd);
 	exit(0);
